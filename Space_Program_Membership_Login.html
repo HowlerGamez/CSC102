@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Membership Login</title>
+    <link rel="stylesheet" href="Space Program Main CSS.css">
+    <script src="Space Program JS Code week 9.js" defer></script>
+
+</head>
+<body>
+    <center>
+    <div class="content" id="topnav">
+            <header>
+                <nav>
+                    <a class="HomeIcon" href="Space_Program_Home.html" title="Home"><img src="home_icon.png"></a>
+                    <a class="LoginIcon" href="Space_Program_Membership_Login.html" title="Login"><img src="login_icon.png"></a>
+                    <a class="DataIcon" href="Space_Program_Data_Tables.html" title="Data"><img src="Data_icon.png"></a>
+                <div class="minicontent" id="topnav2"></div>
+            </nav>
+        </header>
+    </div>
+    <br><br>
+            <!--page header/subtitle introduction, only one h1 tag on a webpage-->
+            <h1>UAT Space Program</h1>
+                <br>
+            <!--image addition, src=source followed by file name (click desired file in drop down menu),
+                alt tag is what the viewers will see-->
+                <img src="UATspaceLogo-1.jpg" alt="UAT Space Logo" />
+                <br><br>
+
+                <p id="output"></p>
+                <script>
+                    // When the page loads, it runs this looping function that tells the locale time. 
+                    window.onload = function(){
+
+                        // Timer runs every second and calls the getTime() function
+                        let timer = setInterval(getTime, 1000);
+
+                        function getTime(){
+                            // Get the current time and format it as a string
+                            let currentTime = new Date();
+                            let time = currentTime.toLocaleTimeString();
+                            // Update the output with the current time and remaining seconds until launch
+                            document.getElementById("output").innerHTML = "Current time: " + time;
+    
+                        }
+                    }
+                </script>
+                <br>
+            
+            <form class="form">
+                <label for="first_name">Enter your first name:</label>
+                <input type="text" id="first_name" name="first_name" required><br><br>
+
+                <label for="last_name">Enter your last name:</label>
+                <input type="text" id="last_name" name="last_name" required><br><br>
+                
+                <label for="bdg_num">Enter your badge number:</label>
+                <input type="number" id="bdg_num" name="bdg_num" required><br><br>
+                
+                <center><button type="button" onclick="getUserInput()">Submit</button></center>
+            </form>
+
+            <br><br>
+
+                    <audio controls>
+                        <source src="space-atmospheric-background-124841.mp3">
+                    </audio>
+
+                    <br><br><br><br><br><br><br><br><br>
+
+                <div class="footer">
+                    <h6><a href="https://pixabay.com/music/ambient-space-atmospheric-background-124841/" title="music credit">Music by lvymusic from Pixabay</a></h6>
+                </div>
+            
+        </center>
+    
+    </div>
+</body>
+</html>
