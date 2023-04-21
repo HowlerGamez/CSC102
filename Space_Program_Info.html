@@ -10,7 +10,7 @@ provides all the tags and things necessary to create document.-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--title tag for the website link, don't make too long-->
-    <title>UAT Space Home</title>
+    <title>UAT Space Program</title>
     <!--anything in the CSS file will be included in this file as well-->
     <link rel="stylesheet" href="Space Program Main CSS.css">
     <!--anything in the Javascript file will be included in this file as well-->
@@ -56,24 +56,85 @@ provides all the tags and things necessary to create document.-->
     <!--break between header and h1-->
     <br><br>
             <!--page header/subtitle introduction, only one h1 tag on a webpage-->
-            <h1>UAT Space Program's Home</h1>
+            <h1>UAT Space Program Information and Countdown</h1>
             <br>
             <!--image addition, src=source followed by file name (click desired file in drop down menu),
                 alt tag is what the viewers will see-->
                 <img src="UATspaceLogo-1.jpg" alt="UAT Space Logo" />
                 <!--break-->
                 <br><br>
-                <!--paragraph block with text-->
-                <p>
-                    Welcome to the UAT Space Program's official website!
-                    Here you will see the progress of a student as they complete the CSC102 Introduction to Programming course!
-                </p>
+                <!--paragraph calling the ID "output" which is later defined-->
+                <p id="output"></p>
+                <!--script calling from Javascript to perform the time-->
+                <script>
+                    // When the page loads, it runs this looping function that tells the locale time. 
+                    window.onload = function(){
+
+                        // Timer runs every second and calls the getTime() function
+                        let timer = setInterval(getTime, 1000);
+                        //getTime() gathers the data for the current time in the local area of the person using the website,
+                        //and performs the following lines of data
+                        function getTime(){
+                            // Get the current time and format it as a string
+                            let currentTime = new Date();
+                            let time = currentTime.toLocaleTimeString();
+                            // Update the output with the current time and remaining seconds until launch
+                            document.getElementById("output").innerHTML = "Current time: " + time;
+    
+                        }
+                    }
+                //end of javascript
+                </script>
+            
+            <!-- User's name and program ID Number are shown on main page of website when it actually works, paragraph text -->
+            <p>
+                <!--<span id="userNameBadge"></span>-->
+                Welcome to the University of Advancing Technology's Space Program!
+            </p>
+            
+            <!--page paragraph tag, provides in text information for the viewer-->
+            <p>
+                Are you interested in the progress of reaching to the stars that we call space?
+                If so, you better prepare for take-off!!!
+            </p>
+            
+            <!--button input (click button, onclick reaction = 
+                javascript alert that shows when the button is clicked)-->
+                <input type="button" Value="Check this out!" onclick="alert('Are you ready to have your mind blown?!?');" />
+                
+                <!-- Countdown visualization on main page -->
+                <p> Countdown: <span id="Countdown"></span> </p>
+                
+                <!-- Creates a start button for when you enter website that will start the Countdown upon clicking it
+                    using the startButtonClick function created in the JS Code -->
+                    <button type="button" onclick="startButtonClick();" id="buttonStart">Start Countdown</button>
+                    
+                    <!-- Creates a stop button that will end the Countdown upon clicking it
+                        using the stopButtonClick function created in the JS Code -->
+                        <button type="button" onclick="stopButtonClick();" id="buttonEnd" disabled="true">Stop Countdown</button>
+                        <br>
+                        <!--calls from javascript -->
+                        <script> 
+                            //takes user info gathered from the Javascript and inputs it to the userInfo variable
+                            //takes the variables and documents it under the name userNameBadge
+                            var userInfo = getUserInput();
+                            document.getElementById("userNameBadge").innerHTML = userInfo;
+                        //end of javascript
+                        </script>
                         <!--break-->
                         <br><br>
-                    <!--div ending(s)-->
+                    <!--audio functionality at the bottom of webpage, contains settings and controls-->
+                    <audio controls>
+                        <!--audio source and time length are accessed-->
+                        <source src="space-atmospheric-background-124841.mp3">
+                    <!--end of audio-->
+                    </audio>
+                    <!--giant break-->
+                    <br><br><br><br><br><br><br>
+                    <!--end of divider(s)-->
                     </div>
                 </div>
-            <!--end of center alignment, at the end of body section-->
+            <!--end of center alignment-->
             </center>
       <!--beginning of footer divider-->
       <div class="footer">

@@ -1,3 +1,4 @@
+//creates and calls function getUserInput, contains full name (first and last) and badge number, and calls them to html page 
 function getUserInput() {
     // Get input values
     let firstName = document.getElementById("first_name").value;
@@ -5,21 +6,27 @@ function getUserInput() {
 
     // Concatenate names and check length
     let fullName = firstName + " " + lastName;
+    //if statement saying that if the fullname is longer then 20 characters, it calls an alert
     if (fullName.length > 20) {
+        //alert for if the if statement isn't met
         alert("Name is too long. Please try again.");
     }
+    //if statement saying that if the fullname is less then 3 character, it calls an alert
     if (fullName.length < 3) {
+        //alert for if the if statement isn't met
         alert("Name is too short. Please try again.");
     }
     // Validate badge number
     let badgeNumber = document.getElementById("bdg_num").value;
+    //if badge number is not a number, greater then 999999, or less then 001, then it calls an alert
     if (isNaN(badgeNumber) || badgeNumber > 999999 || badgeNumber < 001) {
+        //alert for if the if statement isn't met
         alert("Badge number is invalid. Please try again.");   
     }
 
     // Redirect to new page
     window.location.href = "Space_Program_Home.html";
-
+    //returns the function to html
     return getUserInput();
 }
 
@@ -45,7 +52,7 @@ function stopButtonClick(){
       //don't let user click the stop button while countdown is running
       document.getElementById("buttonStart").disabled = false;
       document.getElementById("buttonEnd").disabled = true;
-    
+    //if these requirements are met, the counter is cleared
     for (counter = 0; counter < 51; counter++){
         clearTimeout(arrInterval[counter]);
     }
@@ -72,10 +79,12 @@ function runTimer(countdownElement){
                 if (currTime == 0){
                         //shows on webpage that the Countdown is over, and gives the viewer a popup screen
                         alert("Now it's time for take off!!!")
+                        //text for when countdown is done and alert is over
                         countdownElement.innerHTML = "Launch Successful!";
                 }
                 //if current time on countdown is less then 25, a new message will appear with the current timer appearing after the message
                 else if (currTime < 30){
+                    //text for when the countdown reaches less then 30 seconds remaining
                     countdownElement.innerHTML = "WARNING: Approx. 50% time remaining till launch! Time left = " + currTime;
                 }
                 //shows currTime on webpage for reader to see until less then 25
@@ -89,4 +98,25 @@ function runTimer(countdownElement){
             timeout = timeout + timeoutIncrement;
 
         }
+}
+//creates and calls function animate carousel to create the slides container, the slides, and the arrows
+function animateCarousel(){
+    //slides container called by ID
+    const slidesContainer = document.getElementById("slides-container");
+    //slides called by ID
+    const slide = document.querySelector(".slide");
+    //left arrow/previous arrow called by ID
+    const prevButton = document.getElementById("slide-arrow-prev");
+    //right arrow/next arrow called by ID
+    const nextButton = document.getElementById("slide-arrow-next");
+    //right arrow/next arrow, when clicked it transitions to next image, if on final image it won't do that
+    nextButton.addEventListener("click", () => {
+    const slideWidth = slide.clientWidth;
+    slidesContainer.scrollLeft += slideWidth;
+    });
+    //left arrow/previous arrow, when clicked it transitions to previous image, if on first image it won't do that
+    prevButton.addEventListener("click", () => {
+    const slideWidth = slide.clientWidth;
+    slidesContainer.scrollLeft -= slideWidth;
+    });
 }
